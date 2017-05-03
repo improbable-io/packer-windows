@@ -138,7 +138,7 @@
     {
       "type": "vagrant",
       "keep_input_artifact": false,
-      "output": "{{user `output_directory`}}/packer_windows_10_{{.BuildName}}_{{.Provider}}.box",
+      "output": "{{user `virtualbox_directory`}}/packer_windows_10_{{.BuildName}}_{{.Provider}}.box",
       "vagrantfile_template": "vagrantfile-windows_10.template"
     }
   ],
@@ -147,6 +147,7 @@
     "iso_checksum_type": "sha1",
     "iso_checksum": "56ab095075be28a90bc0b510835280975c6bb2ce",
     "autounattend": "./answer_files/10/Autounattend.xml",
-    "output_directory": "{{env `PACKER_OUTPUT_DIR`}}"
+    "output_directory": "{{env `PACKER_OUTPUT_DIR`}}",
+    "virtualbox_directory": "{{env `PACKER_VIRTUALBOX_DIR`}}"
   }
 }
