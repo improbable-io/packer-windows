@@ -137,7 +137,7 @@
   "post-processors": [
     {
       "type": "vagrant",
-      "keep_input_artifact": false,
+      "keep_input_artifact": true,
       "output": "{{user `vagrant_box_directory`}}/packer_windows_10_{{.BuildName}}_{{.Provider}}.box",
       "vagrantfile_template": "vagrantfile-windows_10.template"
     }
