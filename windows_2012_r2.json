@@ -5,6 +5,7 @@
       "iso_url": "{{user `iso_url`}}",
       "iso_checksum_type": "{{user `iso_checksum_type`}}",
       "iso_checksum": "{{user `iso_checksum`}}",
+      "output_directory": "{{user `output_directory`}}",
       "headless": true,
       "boot_wait": "2m",
       "ssh_username": "vagrant",
@@ -35,6 +36,7 @@
       "iso_url": "{{user `iso_url`}}",
       "iso_checksum_type": "{{user `iso_checksum_type`}}",
       "iso_checksum": "{{user `iso_checksum`}}",
+      "output_directory": "{{user `output_directory`}}",
       "headless": true,
       "boot_wait": "2m",
       "ssh_username": "vagrant",
@@ -47,8 +49,7 @@
         "{{user `autounattend`}}",
         "./scripts/microsoft-updates.bat",
         "./scripts/win-updates.ps1",
-        "./scripts/openssh.ps1",
-        "./scripts/oracle-cert.cer"
+        "./scripts/openssh.ps1"
       ],
       "vboxmanage": [
         [
@@ -70,6 +71,7 @@
       "iso_url": "{{user `iso_url`}}",
       "iso_checksum_type": "{{user `iso_checksum_type`}}",
       "iso_checksum": "{{user `iso_checksum`}}",
+      "output_directory": "{{user `output_directory`}}",
       "boot_wait": "2m",
       "ssh_username": "vagrant",
       "ssh_password": "vagrant",
@@ -82,8 +84,7 @@
         "{{user `autounattend`}}",
         "./scripts/microsoft-updates.bat",
         "./scripts/win-updates.ps1",
-        "./scripts/openssh.ps1",
-        "./scripts/oracle-cert.cer"
+        "./scripts/openssh.ps1"
       ],
       "prlctl": [
         [
@@ -128,7 +129,7 @@
     {
       "type": "vagrant",
       "keep_input_artifact": false,
-      "output": "windows_2012_r2_{{.Provider}}.box",
+      "output": "{{user `vagrant_box_directory`}}/windows_2012_r2_{{.BuildName}}_{{.Provider}}.box",
       "vagrantfile_template": "vagrantfile-windows_2012_r2.template"
     }
   ],
@@ -136,6 +137,8 @@
     "iso_url": "http://download.microsoft.com/download/6/2/A/62A76ABB-9990-4EFC-A4FE-C7D698DAEB96/9600.16384.WINBLUE_RTM.130821-1623_X64FRE_SERVER_EVAL_EN-US-IRM_SSS_X64FREE_EN-US_DV5.ISO",
     "iso_checksum_type": "md5",
     "iso_checksum": "458ff91f8abc21b75cb544744bf92e6a",
-    "autounattend": "./answer_files/2012_r2/Autounattend.xml"
+    "autounattend": "./answer_files/2012_r2/Autounattend.xml",
+    "output_directory": "{{env `PACKER_OUTPUT_DIR`}}",
+    "vagrant_box_directory": "{{env `PACKER_VAGRANT_BOX_DIR`}}"
   }
 }
